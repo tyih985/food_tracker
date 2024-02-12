@@ -16,11 +16,10 @@ create a valuable tool that can help sustain one's financial goals. Whether user
 efficiently, or simply keep track of their favourite restaurant meals, I hope my application proves to be worthwhile.
 
 ### <u>User Stories</u>
-- As a user, I want to be able to log a new dish, including its price, enjoyment level, and the restaurant came from,
-  into a list of dishes I’ve eaten.
+- As a user, I want to be able to log a new dish, including its price, enjoyment level, the restaurant it came from,
+  and if it was a favourite, into a list of dishes I’ve eaten.
 - As a user, I want to be able to view a list of all the dishes I’ve logged in the past.
-- As a user, I want to be able to sort my list of meal logs based on the type of cuisine, dishes from the same
+- As a user, I want to be able to filter my list of meal logs based on the type of cuisine, dishes from the same
   restaurant, the price of the dish, etc.
 - As a user, I want to be able to edit my list of meal logs by changing information about past meal logs, or removing
   past meal logs from my list of meal logs
-- As a user, I want to be able to favourite / unfavourite dishes in my list of meal logs
