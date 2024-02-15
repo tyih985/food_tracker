@@ -171,14 +171,10 @@ public class TestListOfDishLog {
 
     @Test
     public void testFilterByFavourite() {
-        assertEquals(2, testListOfDishLog.filterByFavourite(false).size());
-        assertEquals(testDishLog2, testListOfDishLog.filterByFavourite(false).get(0));
-        assertEquals(testDishLog5, testListOfDishLog.filterByFavourite(false).get(1));
-
-        assertEquals(4, testListOfDishLog.filterByFavourite(true).size());
-        assertEquals(testDishLog1, testListOfDishLog.filterByFavourite(true).get(0));
-        assertEquals(testDishLog3, testListOfDishLog.filterByFavourite(true).get(1));
-        assertEquals(testDishLog4, testListOfDishLog.filterByFavourite(true).get(2));
-        assertEquals(testDishLog6, testListOfDishLog.filterByFavourite(true).get(3));
+        assertEquals(4, testListOfDishLog.filterByFavourite().size());
+        assertEquals(testDishLog1, testListOfDishLog.filterByFavourite().get(0));
+        assertEquals(testDishLog3, testListOfDishLog.filterByFavourite().get(1));
+        assertEquals(testDishLog4, testListOfDishLog.filterByFavourite().get(2));
+        assertEquals(testDishLog6, testListOfDishLog.filterByFavourite().get(3));
     }
 }

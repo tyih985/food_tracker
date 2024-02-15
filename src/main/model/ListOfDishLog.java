@@ -41,7 +41,7 @@ public class ListOfDishLog {
     public List<DishLog> filterByRestaurant(String restaurant) {
         List<DishLog> filteredListOfDishLog = new ArrayList<>();
         for (DishLog dishLog : listOfDishLog) {
-            if (dishLog.getRestaurant().toLowerCase().equals(restaurant.toLowerCase())) {
+            if (dishLog.getRestaurant().equalsIgnoreCase(restaurant)) {
                 filteredListOfDishLog.add(dishLog);
             }
         }
@@ -49,10 +49,10 @@ public class ListOfDishLog {
     }
 
     // EFFECTS: returns List<DishLog> with DishLog(s) in listOfDishLog that have price in range [lower, upper]
-    public List<DishLog> filterByPrice(double lower, double upper) {
+    public List<DishLog> filterByPrice(double lowerBound, double upperBound) {
         List<DishLog> filteredListOfDishLog = new ArrayList<>();
         for (DishLog dishLog : listOfDishLog) {
-            if (lower <= dishLog.getPrice() && dishLog.getPrice() <= upper) {
+            if (lowerBound <= dishLog.getPrice() && dishLog.getPrice() <= upperBound) {
                 filteredListOfDishLog.add(dishLog);
             }
         }
@@ -70,11 +70,11 @@ public class ListOfDishLog {
         return filteredListOfDishLog;
     }
 
-    // EFFECTS: returns List<DishLog> with DishLog(s) in listOfDishLog that have given favourite status
-    public List<DishLog> filterByFavourite(boolean favourite) {
+    // EFFECTS: returns List<DishLog> with DishLog(s) in listOfDishLog that are favourites
+    public List<DishLog> filterByFavourite() {
         List<DishLog> filteredListOfDishLog = new ArrayList<>();
         for (DishLog dishLog : listOfDishLog) {
-            if (dishLog.getFavourite() == favourite) {
+            if (dishLog.getFavourite()) {
                 filteredListOfDishLog.add(dishLog);
             }
         }
@@ -89,5 +89,10 @@ public class ListOfDishLog {
     // EFFECTS: returns true if listOfDishLog is empty
     public boolean isEmpty() {
         return this.listOfDishLog.isEmpty();
+    }
+
+    // EFFECTS: return listOfDishLog
+    public List<DishLog> getListOfDishLog() {
+        return listOfDishLog;
     }
 }
