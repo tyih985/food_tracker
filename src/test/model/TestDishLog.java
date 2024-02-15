@@ -22,6 +22,8 @@ public class TestDishLog {
 
     @Test
     public void testConstructorAndGetters() {
+        dishLog1 = new DishLog("Congee", "Congee Masters",
+                100.50, 3, false);
         assertEquals("Congee", dishLog1.getName());
         assertEquals("Congee Masters", dishLog1.getRestaurant());
         assertEquals(100.50, dishLog1.getPrice());
