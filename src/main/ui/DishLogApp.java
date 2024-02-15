@@ -113,7 +113,7 @@ public class DishLogApp {
         } else if (request.equals("v")) {
             viewDishLogs();
         } else {
-            System.out.println("Invalid request. Please try again.");
+            System.out.println("\nInvalid request. Please try again.");
         }
     }
 
@@ -126,7 +126,7 @@ public class DishLogApp {
         } else if (request.equals("e")) {
             editDishLogs();
         } else {
-            System.out.println("Invalid request. Please try again.");
+            System.out.println("\nInvalid request. Please try again.");
         }
     }
 
@@ -144,7 +144,7 @@ public class DishLogApp {
         } else if (request.equals("f")) {
             filterDishLogsByFavourites();
         } else {
-            System.out.println("Invalid request. Please try again.");
+            System.out.println("\nInvalid request. Please try again.");
         }
     }
 
@@ -157,7 +157,7 @@ public class DishLogApp {
         } else if (request.equals("d")) {
             removeDishLog();
         } else {
-            System.out.println("Invalid request. Please try again.");
+            System.out.println("\nInvalid request. Please try again.");
         }
     }
 
@@ -167,21 +167,21 @@ public class DishLogApp {
     private void selectEditDishLogMenu(String request, DishLog requestedDishLog) {
         if (request.equals("n")) {
             setName(requestedDishLog);
-            System.out.println("Dish log edited successfully!");
+            System.out.println("\nDish log edited successfully!");
         } else if (request.equals("r")) {
             setRestaurant(requestedDishLog);
-            System.out.println("Dish log edited successfully!");
+            System.out.println("\nDish log edited successfully!");
         } else if (request.equals("p")) {
             setPrice(requestedDishLog);
-            System.out.println("Dish log edited successfully!");
+            System.out.println("\nDish log edited successfully!");
         } else if (request.equals("e")) {
             setEnjoymentLevel(requestedDishLog);
-            System.out.println("Dish log edited successfully!");
+            System.out.println("\nDish log edited successfully!");
         } else if (request.equals("f")) {
             setFavouriteStatus(requestedDishLog);
-            System.out.println("Dish log edited successfully!");
+            System.out.println("\nDish log edited successfully!");
         } else {
-            System.out.println("Invalid request. Please try again.");
+            System.out.println("\nInvalid request. Please try again.");
         }
     }
 
@@ -310,7 +310,7 @@ public class DishLogApp {
     private void viewDishLogs() {
         String request;
         if (listOfDishLog.isEmpty()) {
-            System.out.println("No Dish Logs made yet.");
+            System.out.println("\nNo Dish Logs made yet.");
         } else {
             viewList(listOfDishLog.getListOfDishLog());
 
@@ -333,10 +333,18 @@ public class DishLogApp {
         if (listOfDishLog.isEmpty()) {
             System.out.println("No Dish Logs match given filter.");
         } else {
-            System.out.println("Dish Logs:");
+            System.out.println("\nDish Logs:");
             for (DishLog dishLog : listOfDishLog) {
                 int num = this.listOfDishLog.getListOfDishLog().indexOf(dishLog) + 1;
-                System.out.println("\tDish Log " + num + ": " + dishLog.getName());
+                String favourite;
+                if (dishLog.getFavourite()) {
+                    favourite = "favourite";
+                } else {
+                    favourite = "unfavourite";
+                }
+                System.out.println("\tDish Log " + num + ": " + dishLog.getName() + ", " + dishLog.getRestaurant()
+                        + " (restaurant), $" + dishLog.getPrice() + ", enjoyment level " + dishLog.getEnjoymentLevel() + ", "
+                        + favourite);
             }
         }
     }
@@ -400,7 +408,8 @@ public class DishLogApp {
         int enjoymentLevel = 0;
 
         while (true) {
-            System.out.println("\nPlease enter the enjoyment level you would like to filter by:");
+            System.out.println("\nPlease enter the enjoyment level you would like to filter by"
+                    + " (on a scale from 1 to 5):");
             try {
                 enjoymentLevel = inputEnjoymentLevel();
                 break;
@@ -502,7 +511,7 @@ public class DishLogApp {
                 }
                 break;
             } catch (Exception e) {
-                System.out.println("Invalid Dish Log number. Please try again.");
+                System.out.println("\nInvalid Dish Log number. Please try again.");
             }
         }
         requestedDishLog = listOfDishLog.getDishLog(request - 1);
@@ -514,7 +523,7 @@ public class DishLogApp {
     private void editDishLog(DishLog requestedDishLog) {
         String request;
         while (true) {
-            System.out.println("Selected Dish Log: " + requestedDishLog.getName());
+            System.out.println("\nSelected Dish Log: " + requestedDishLog.getName());
             viewEditDishLogMenu();
             request = input.next();
             request = request.toLowerCase();
@@ -548,10 +557,10 @@ public class DishLogApp {
                 }
                 break;
             } catch (Exception e) {
-                System.out.println("Invalid Dish Log number. Please try again.");
+                System.out.println("\nInvalid Dish Log number. Please try again.");
             }
         }
         listOfDishLog.removeDishLog(request - 1);
-        System.out.println("Dish log removed successfully!");
+        System.out.println("\nDish log removed successfully!");
     }
 }
