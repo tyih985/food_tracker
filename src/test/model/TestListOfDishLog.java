@@ -177,4 +177,17 @@ public class TestListOfDishLog {
         assertEquals(testDishLog4, testListOfDishLog.filterByFavourite().get(2));
         assertEquals(testDishLog6, testListOfDishLog.filterByFavourite().get(3));
     }
+
+    @Test
+    public void testGetListOfDishLog() {
+        ListOfDishLog testListOfDishLog2 = new ListOfDishLog();
+        testListOfDishLog2.addDishLog(testDishLog1);
+        testListOfDishLog2.addDishLog(testDishLog2);
+        testListOfDishLog2.addDishLog(testDishLog3);
+        testListOfDishLog2.addDishLog(testDishLog4);
+        testListOfDishLog2.addDishLog(testDishLog5);
+        testListOfDishLog2.addDishLog(testDishLog6);
+
+        assertEquals(testListOfDishLog2.getListOfDishLog(), testListOfDishLog.getListOfDishLog());
+    }
 }
