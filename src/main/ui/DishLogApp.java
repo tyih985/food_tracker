@@ -245,6 +245,7 @@ public class DishLogApp {
 
         while (!priceWasEntered) {
             System.out.println("\nWhat is the price of this dish?");
+            System.out.print("$");
 
             try {
                 priceInput = input.next();
