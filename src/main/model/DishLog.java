@@ -1,7 +1,5 @@
 package model;
 
-import exceptions.*;
-
 // DishLog represents a log of a dish a user has had.
 // In each DishLog, the user records the name of the dish, the restaurant the dish came from, the price of the dish,
 // the level of enjoyment they experienced from the dish (on a scale from 1-5), and if the dish is a favourite.
