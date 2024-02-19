@@ -1,9 +1,5 @@
 package ui;
 
-import exceptions.InvalidBoundsException;
-import exceptions.InvalidDishLogNumber;
-import exceptions.InvalidEnjoymentLevelException;
-import exceptions.InvalidPriceException;
 import model.DishLog;
 import model.ListOfDishLog;
 
@@ -252,7 +248,7 @@ public class DishLogApp {
                 price = Double.parseDouble(priceInput);
 
                 if (price < 0) {
-                    throw new InvalidPriceException();
+                    throw new Exception();
                 } else {
                     priceWasEntered = true;
                 }
@@ -343,7 +339,7 @@ public class DishLogApp {
                 } else {
                     favourite = "unfavourite";
                 }
-                System.out.println("\tDish Log " + num + ": " + dishLog.getName() + ", " + dishLog.getRestaurant()
+                System.out.println("\tDish Log " + num + ": " + dishLog.getName() + " (name), " + dishLog.getRestaurant()
                         + " (restaurant), $" + dishLog.getPrice() + ", enjoyment level " + dishLog.getEnjoymentLevel()
                         + ", " + favourite);
             }
@@ -393,10 +389,10 @@ public class DishLogApp {
                 lowerBound = inputLowerBound();
                 upperBound = inputUpperBound();
                 if (lowerBound > upperBound) {
-                    throw new InvalidBoundsException();
+                    throw new Exception();
                 }
                 break;
-            } catch (InvalidBoundsException e) {
+            } catch (Exception e) {
                 System.out.println("Upper bound must be greater or equal to lower bound. Please try again.");
             }
         }
@@ -464,12 +460,12 @@ public class DishLogApp {
     }
 
     // EFFECTS: returns enjoyment level of dish entered by user
-    private int inputEnjoymentLevel() throws InvalidEnjoymentLevelException {
+    private int inputEnjoymentLevel() throws Exception {
         String enjoymentLevelInput;
         enjoymentLevelInput = input.next();
         int enjoymentLevel = Integer.parseInt(enjoymentLevelInput);
         if (!validEnjoymentLevels.contains(enjoymentLevel)) {
-            throw new InvalidEnjoymentLevelException();
+            throw new Exception();
         }
         return enjoymentLevel;
     }
@@ -508,7 +504,7 @@ public class DishLogApp {
                 requestInput = input.next();
                 request = Integer.parseInt(requestInput);
                 if (!validDishLogNumbers.contains(request)) {
-                    throw new InvalidDishLogNumber();
+                    throw new Exception();
                 }
                 break;
             } catch (Exception e) {
@@ -554,7 +550,7 @@ public class DishLogApp {
                 requestInput = input.next();
                 request = Integer.parseInt(requestInput);
                 if (!validDishLogNumbers.contains(request)) {
-                    throw new InvalidDishLogNumber();
+                    throw new Exception();
                 }
                 break;
             } catch (Exception e) {
