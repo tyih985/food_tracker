@@ -339,9 +339,9 @@ public class DishLogApp {
                 } else {
                     favourite = "unfavourite";
                 }
-                System.out.println("\tDish Log " + num + ": " + dishLog.getName() + " (name), " + dishLog.getRestaurant()
-                        + " (restaurant), $" + dishLog.getPrice() + ", enjoyment level " + dishLog.getEnjoymentLevel()
-                        + ", " + favourite);
+                System.out.println("\tDish Log " + num + ": " + dishLog.getName() + " (name), "
+                        + dishLog.getRestaurant() + " (restaurant), $" + dishLog.getPrice() + ", enjoyment level "
+                        + dishLog.getEnjoymentLevel() + ", " + favourite);
             }
         }
     }
