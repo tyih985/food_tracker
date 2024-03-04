@@ -23,3 +23,6 @@ efficiently, or simply keep track of their favourite restaurant meals, I hope my
   restaurant, the price of the dish, etc.
 - As a user, I want to be able to edit my list of meal logs by changing information about past meal logs, or removing
   past meal logs from my list of meal logs
+- As a user, I want the option to save all the dishes I’ve logged in the past to file
+- As a user, I want the option to reload my saved state from file and resume exactly where I left off at some earlier 
+  time
