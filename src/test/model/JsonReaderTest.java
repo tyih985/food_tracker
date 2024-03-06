@@ -1,10 +1,9 @@
 // based on https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
-package persistence;
+package model;
 
-import model.DishLog;
-import model.ListOfDishLog;
 import org.junit.jupiter.api.Test;
+import persistence.JsonReader;
 
 import java.io.IOException;
 import java.util.List;

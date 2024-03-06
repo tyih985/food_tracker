@@ -1,10 +1,10 @@
 // based on https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
-package persistence;
+package model;
 
-import model.DishLog;
-import model.ListOfDishLog;
 import org.junit.jupiter.api.Test;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,10 +12,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JsonWriterTest extends JsonTest {
-    //NOTE TO CPSC 210 STUDENTS: the strategy in designing tests for the JsonWriter is to
-    //write data to a file and then use the reader to read it back in and check that we
-    //read in a copy of what was written out.
-
     @Test
     void testWriterInvalidFile() {
         try {
@@ -29,7 +25,7 @@ class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterEmptyListOfDishLog() {
         try {
             ListOfDishLog ld = new ListOfDishLog();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyListOfDishLog.json");
