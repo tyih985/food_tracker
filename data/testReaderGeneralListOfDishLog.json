@@ -1,0 +1,16 @@
+{"dish logs": [
+    {
+        "price": 500.5,
+        "restaurant": "burger place",
+        "name": "burger",
+        "favourite": true,
+        "enjoymentLevel": 2
+    },
+    {
+        "price": 25.99,
+        "restaurant": "dog house",
+        "name": "dog",
+        "favourite": false,
+        "enjoymentLevel": 5
+    }
+]}

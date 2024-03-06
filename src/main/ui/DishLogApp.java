@@ -2,16 +2,23 @@ package ui;
 
 import model.DishLog;
 import model.ListOfDishLog;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 // Dish log application
 public class DishLogApp {
+    private static final String JSON_STORE = "./data/listOfDishLog.json";
     private ListOfDishLog listOfDishLog;
     private Scanner input;
     private ArrayList<Integer> validEnjoymentLevels;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the dish log application
     public DishLogApp() {
@@ -48,6 +55,8 @@ public class DishLogApp {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
         validEnjoymentLevels = new ArrayList<>();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
 
         for (int i = 1; i <= 5; i++) {
             validEnjoymentLevels.add(i);
@@ -59,6 +68,8 @@ public class DishLogApp {
         System.out.println("\nWhat would you like to do?");
         System.out.println("\tc --> create new Dish Log");
         System.out.println("\tv --> view past Dish Logs");
+        System.out.println("\ts -> save Dish Logs to file");
+        System.out.println("\tl -> load Dish Logs from file");
         System.out.println("\tq --> quit application");
     }
 
@@ -108,8 +119,35 @@ public class DishLogApp {
             createDishLog();
         } else if (request.equals("v")) {
             viewDishLogs();
+        } else if (request.equals("s")) {
+            saveDishLogs();
+        } else if (request.equals("l")) {
+            loadDishLogs();
         } else {
             System.out.println("\nInvalid request. Please try again.");
+        }
+    }
+
+    // EFFECTS: saves listOfDishLog to file
+    private void saveDishLogs() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(listOfDishLog);
+            jsonWriter.close();
+            System.out.println("Saved Dish Logs to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads listOfDishLog from file
+    private void loadDishLogs() {
+        try {
+            listOfDishLog = jsonReader.read();
+            System.out.println("Loaded Dish Logs from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 

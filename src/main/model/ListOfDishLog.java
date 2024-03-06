@@ -1,14 +1,18 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // ListOfDishLog represents past dishes the user has logged.
 // User's DishLogs are stored in ListOfDishLog as List<DishLog>.
-public class ListOfDishLog {
+public class ListOfDishLog implements Writable {
     private List<DishLog> listOfDishLog;
 
-    // EFFECTS: Makes a new ListOfDishLog with a listOfDishLog that is empty
+    // EFFECTS: Makes a new ListOfDishLog with given name and empty listOfDishLog
     public ListOfDishLog() {
         this.listOfDishLog = new ArrayList<>();
     }
@@ -79,6 +83,24 @@ public class ListOfDishLog {
             }
         }
         return filteredListOfDishLog;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("dish logs", dishLogsToJason());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray dishLogsToJason() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (DishLog dl : listOfDishLog) {
+            jsonArray.put(dl.toJson());
+        }
+
+        return jsonArray;
     }
 
     // EFFECTS: returns DishLog in listOfDishLog at given index

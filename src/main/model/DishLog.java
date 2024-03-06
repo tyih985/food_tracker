@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // DishLog represents a log of a dish a user has had.
 // In each DishLog, the user records the name of the dish, the restaurant the dish came from, the price of the dish,
 // the level of enjoyment they experienced from the dish (on a scale from 1-5), and if the dish is a favourite.
-public class DishLog {
+public class DishLog implements Writable {
     private String name;
     private String restaurant;
     private double price;
@@ -18,6 +21,17 @@ public class DishLog {
         this.price = price;
         this.enjoymentLevel = enjoymentLevel;
         this.favourite = favourite;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("restaurant", restaurant);
+        json.put("price", price);
+        json.put("enjoymentLevel", enjoymentLevel);
+        json.put("favourite", favourite);
+        return json;
     }
 
     public String getName() {
