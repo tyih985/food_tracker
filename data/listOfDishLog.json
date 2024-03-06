@@ -1,7 +1,7 @@
 {"dish logs": [{
-    "price": 2,
-    "restaurant": "c",
-    "name": "c",
+    "price": 5000,
+    "restaurant": "test",
+    "name": "test",
     "favourite": true,
-    "enjoymentLevel": 2
+    "enjoymentLevel": 1
 }]}

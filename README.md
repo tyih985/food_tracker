@@ -26,3 +26,6 @@ efficiently, or simply keep track of their favourite restaurant meals, I hope my
 - As a user, I want the option to save all the dishes I’ve logged in the past to file
 - As a user, I want the option to reload my saved state from file and resume exactly where I left off at some earlier 
   time
+- As a user, when I select the quit option from the application main menu, I want to be reminded to save my Dish Logs
+- to file and have the option to do so or not
+- As a user, when I start the application, I want to be given the option to load my to-do list from file

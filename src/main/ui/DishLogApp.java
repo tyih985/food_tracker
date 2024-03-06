@@ -32,6 +32,7 @@ public class DishLogApp {
         String request;
 
         init();
+        offerLoad();
 
         while (appRunning) {
             viewMainMenu();
@@ -45,6 +46,7 @@ public class DishLogApp {
             }
         }
 
+        offerSave();
         System.out.println("Application closed.");
     }
 
@@ -60,6 +62,54 @@ public class DishLogApp {
 
         for (int i = 1; i <= 5; i++) {
             validEnjoymentLevels.add(i);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads listOfDishLog from file if user chooses to do so
+    private void offerLoad() {
+        boolean yesOrNoEntered = false;
+        String yesOrNo;
+
+        while (!yesOrNoEntered) {
+            System.out.println("Would you like to load your Dish Logs from file? (yes/no)");
+
+            yesOrNo = input.next();
+            yesOrNo = yesOrNo.toLowerCase();
+
+            if (yesOrNo.equals("yes") || yesOrNo.equals("y")) {
+                loadDishLogs();
+                yesOrNoEntered = true;
+            } else if (yesOrNo.equals("no") || yesOrNo.equals("n")) {
+                yesOrNoEntered = true;
+            } else {
+                System.out.println("\nInvalid response. Please try again.\n");
+            }
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: saves listOfDishLog to file if user chooses to do so
+    private void offerSave() {
+        boolean yesOrNoEntered = false;
+        String yesOrNo;
+
+        while (!yesOrNoEntered) {
+            System.out.println("\nWould you like to save your Dish Logs to file before closing the application?"
+                    + " (yes/no)");
+
+            yesOrNo = input.next();
+            yesOrNo = yesOrNo.toLowerCase();
+
+            if (yesOrNo.equals("yes") || yesOrNo.equals("y")) {
+                saveDishLogs();
+                yesOrNoEntered = true;
+            } else if (yesOrNo.equals("no") || yesOrNo.equals("n")) {
+                System.out.println();
+                yesOrNoEntered = true;
+            } else {
+                System.out.println("\nInvalid response. Please try again.");
+            }
         }
     }
 
@@ -134,9 +184,9 @@ public class DishLogApp {
             jsonWriter.open();
             jsonWriter.write(listOfDishLog);
             jsonWriter.close();
-            System.out.println("Saved Dish Logs to " + JSON_STORE);
+            System.out.println("\nSaved Dish Logs to " + JSON_STORE + "\n");
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            System.out.println("\nUnable to write to file: " + JSON_STORE + "\n");
         }
     }
 
@@ -145,9 +195,9 @@ public class DishLogApp {
     private void loadDishLogs() {
         try {
             listOfDishLog = jsonReader.read();
-            System.out.println("Loaded Dish Logs from " + JSON_STORE);
+            System.out.println("\nLoaded Dish Logs from " + JSON_STORE + "\n");
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            System.out.println("\nUnable to read from file: " + JSON_STORE + "\n");
         }
     }
 
