@@ -416,7 +416,7 @@ public class DishLogApp {
     // EFFECTS: prints the names of each DishLog in given listOfDishLog
     private void viewList(List<DishLog> listOfDishLog) {
         if (listOfDishLog.isEmpty()) {
-            System.out.println("No Dish Logs match given filter.");
+            System.out.println("\nNo Dish Logs match given filter.");
         } else {
             System.out.println("\nDish Logs:");
             for (DishLog dishLog : listOfDishLog) {
