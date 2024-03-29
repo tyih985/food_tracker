@@ -1,7 +1,16 @@
-{"dish logs": [{
-    "price": 5000,
-    "restaurant": "test",
-    "name": "test",
-    "favourite": true,
-    "enjoymentLevel": 1
-}]}
+{"dish logs": [
+    {
+        "price": 0,
+        "restaurant": "uigyuvgkhj",
+        "name": "iohugyuvgugh",
+        "favourite": false,
+        "enjoymentLevel": 5
+    },
+    {
+        "price": 500,
+        "restaurant": "WORLD",
+        "name": "HELLO",
+        "favourite": true,
+        "enjoymentLevel": 1
+    }
+]}

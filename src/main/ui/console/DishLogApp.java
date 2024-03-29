@@ -1,4 +1,4 @@
-package ui;
+package ui.console;
 
 import model.DishLog;
 import model.ListOfDishLog;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Dish log application
+// Dish Log application in console.
 public class DishLogApp {
     private static final String JSON_STORE = "./data/listOfDishLog.json";
     private ListOfDishLog listOfDishLog;

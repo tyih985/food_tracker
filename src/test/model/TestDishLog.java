@@ -57,4 +57,12 @@ public class TestDishLog {
         assertEquals(5, dishLog1.getEnjoymentLevel());
         assertTrue(dishLog1.getFavourite());
     }
+
+    @Test
+    public void testPrintReport() {
+        assertEquals("Congee (name), Congee Masters (restaurant), $100.5, enjoyment level 3, " +
+                "unfavourite", dishLog1.printReport());
+        assertEquals("1-Month-Old Kitten (name), Cat Soo San (restaurant), $20.13, enjoyment level 5, " +
+                "favourite", dishLog2.printReport());
+    }
 }

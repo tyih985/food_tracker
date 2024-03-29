@@ -23,6 +23,7 @@ public class DishLog implements Writable {
         this.favourite = favourite;
     }
 
+    // EFFECTS: converts dish log to json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -32,6 +33,16 @@ public class DishLog implements Writable {
         json.put("enjoymentLevel", enjoymentLevel);
         json.put("favourite", favourite);
         return json;
+    }
+
+    // EFFECTS: prints summary of this Dish Log
+    public String printReport() {
+        String fav = "unfavourite";
+        if (favourite) {
+            fav = "favourite";
+        }
+        return name + " (name), " + restaurant + " (restaurant), $" + price + ", enjoyment level "
+                + enjoymentLevel + ", " + fav;
     }
 
     public String getName() {

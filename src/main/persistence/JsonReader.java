@@ -48,7 +48,7 @@ public class JsonReader {
     }
 
     // MODIFIES: ld
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // EFFECTS: parses content from JSON object and adds them to file
     private void addDishLogs(ListOfDishLog ld, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("dish logs");
         for (Object json : jsonArray) {
@@ -58,7 +58,7 @@ public class JsonReader {
     }
 
     // MODIFIES: ld
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // EFFECTS: parses content from JSON object and adds it to file
     private void saveDishLog(ListOfDishLog ld, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         String restaurant = jsonObject.getString("restaurant");
