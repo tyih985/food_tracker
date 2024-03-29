@@ -26,6 +26,7 @@ public class GUI extends JFrame {
     protected JPanel homeScreenTab;
     protected JPanel makeDishLogsScreen;
     protected JPanel dishLogsScreen;
+    protected JPanel editDishLogsScreen;
 
     // EFFECTS: init
     public static void main(String[] args) {
@@ -81,6 +82,7 @@ public class GUI extends JFrame {
         homeScreenTab = new HomeScreen(listOfDishLog);
         makeDishLogsScreen = new MakeDishLogsScreen(listOfDishLog);
         dishLogsScreen = new DishLogsScreen(listOfDishLog);
+        editDishLogsScreen = new EditDishLogsScreen(listOfDishLog);
 
         tabbedPane.add(homeScreenTab, 0);
         tabbedPane.setTitleAt(0, "Home");
@@ -90,5 +92,8 @@ public class GUI extends JFrame {
 
         tabbedPane.add(dishLogsScreen, 2);
         tabbedPane.setTitleAt(2, "Dish Logs");
+
+        tabbedPane.add(editDishLogsScreen, 3);
+        tabbedPane.setTitleAt(3, "Edit Dish Logs");
     }
 }

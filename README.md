@@ -37,6 +37,9 @@ efficiently, or simply keep track of their favourite restaurant meals, I hope my
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by going to the
   "Dish Logs" screen, selecting a Dish Log (press the "Refresh" button if they are not visible yet), and pressing the
   "Remove" button
+- You can generate a third action related to the user story "adding multiple Xs to a Y" by going to the
+  "Edit Dish Logs" screen, filling out the fields, and pressing the "Edit" button; To view these changes, go to the 
+  "Dish Logs" screen and press the "Refresh" button
 - You can locate my visual component by going to the "Home" screen
 - You can save the state of my application by going to the "Home" screen and pressing the "Save" button; You will also
   be prompted to save when closing the application

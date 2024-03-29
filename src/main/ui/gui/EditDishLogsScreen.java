@@ -11,23 +11,26 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
 
-// Screen where user can create a new Dish Log, which will be added to their list of Dish Logs.
-public class MakeDishLogsScreen extends Screen implements PropertyChangeListener, ActionListener {
+// Screen where user can edit past Dish Logs by changing information.
+public class EditDishLogsScreen extends Screen implements PropertyChangeListener, ActionListener {
 
+    private int index = 0;
     private String name = "";
     private String restaurant = "";
     private double price = 0.00;
     private int enjoymentLevel = 1;
     private String favourite = "no";
 
-    private JButton addButton;
+    private JButton editButton;
 
+    private JLabel indexLabel;
     private JLabel nameLabel;
     private JLabel restaurantLabel;
     private JLabel priceLabel;
     private JLabel enjoymentLevelLabel;
     private JLabel favouriteLabel;
 
+    private JFormattedTextField indexField;
     private JFormattedTextField nameField;
     private JFormattedTextField restaurantField;
     private JFormattedTextField priceField;
@@ -36,14 +39,14 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
 
     private NumberFormat priceFormat;
 
-    // EFFECTS: sets up screen for user to create new Dish Logs
-    public MakeDishLogsScreen(ListOfDishLog listOfDishLog) {
+    // EFFECTS: sets up screen for user to edit past Dish Logs
+    public EditDishLogsScreen(ListOfDishLog listOfDishLog) {
         super(listOfDishLog);
 
         setUpLabels();
         setUpTextFields();
         pairLabelsAndTextFields();
-        setUpAddButton();
+        setUpEditButton();
 
         setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
 
@@ -53,6 +56,7 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
     // MODIFIES: this
     // EFFECTS: pairs labels and text fields
     private void pairLabelsAndTextFields() {
+        indexLabel.setLabelFor(indexField);
         nameLabel.setLabelFor(nameField);
         restaurantLabel.setLabelFor(restaurantField);
         priceLabel.setLabelFor(priceField);
@@ -63,6 +67,7 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
     // MODIFIES: this
     // EFFECTS: sets up labels
     private void setUpLabels() {
+        indexLabel = new JLabel("Index:");
         nameLabel = new JLabel("Name:");
         restaurantLabel = new JLabel("Restaurant:");
         priceLabel = new JLabel("Price");
@@ -73,6 +78,10 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
     // MODIFIES: this
     // EFFECTS: sets up text fields
     private void setUpTextFields() {
+        indexField = new JFormattedTextField();
+        indexField.setValue(new Integer(index));
+        setTextFieldProperty(indexField);
+
         nameField = new JFormattedTextField();
         nameField.setText(name);
         setTextFieldProperty(nameField);
@@ -107,6 +116,7 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
     // EFFECTS: sets up label panel
     private JPanel setUpLabelPanel() {
         JPanel labelPane = new JPanel(new GridLayout(0,1));
+        labelPane.add(indexLabel);
         labelPane.add(nameLabel);
         labelPane.add(restaurantLabel);
         labelPane.add(priceLabel);
@@ -131,6 +141,7 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
     // EFFECTS: sets up text field panel
     private JPanel setUpTextFieldPanel() {
         JPanel fieldPanel = new JPanel(new GridLayout(0,1));
+        fieldPanel.add(indexField);
         fieldPanel.add(nameField);
         fieldPanel.add(restaurantField);
         fieldPanel.add(priceField);
@@ -144,19 +155,19 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
     private JPanel setUpButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BorderLayout());
-        buttonPanel.add(addButton, BorderLayout.CENTER);
+        buttonPanel.add(editButton, BorderLayout.CENTER);
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         return buttonPanel;
     }
 
     // MODIFIES: this
-    // EFFECTS: sets up "add" button
-    private void setUpAddButton() {
-        addButton = new JButton("Add");
-        addButton.setActionCommand("add");
-        addButton.addActionListener(this);
-        addButton.setEnabled(true);
-        addButton.setToolTipText("Add this Dish Log to the list of Dish Logs");
+    // EFFECTS: sets up "edit" button
+    private void setUpEditButton() {
+        editButton = new JButton("Edit");
+        editButton.setActionCommand("edit");
+        editButton.addActionListener(this);
+        editButton.setEnabled(true);
+        editButton.setToolTipText("Replaces Dish Log information at given index");
     }
 
     // MODIFIES: this
@@ -183,7 +194,9 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
     @Override
     public void propertyChange(PropertyChangeEvent e) {
         Object source = e.getSource();
-        if (source == nameField) {
+        if (source == indexField) {
+            index = ((Number)indexField.getValue()).intValue();
+        } else if (source == nameField) {
             name = nameField.getText().toString();
         } else if (source == restaurantField) {
             restaurant = restaurantField.getText().toString();
@@ -197,7 +210,7 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the Dish Log to listOfDishLog if "add" button pressed
+    // EFFECTS: edit the Dish Log at index in listOfDishLog if "edit" button pressed
     @Override
     public void actionPerformed(ActionEvent e) {
         boolean fav = false;
@@ -205,9 +218,17 @@ public class MakeDishLogsScreen extends Screen implements PropertyChangeListener
         if (favourite.toLowerCase().equals("yes")) {
             fav = true;
         }
-        if (e.getActionCommand().equals("add")) {
-            DishLog dishLog = new DishLog(name, restaurant, price, enjoymentLevel, fav);
-            listOfDishLog.addDishLog(dishLog);
+        if (e.getActionCommand().equals("edit")) {
+            try {
+                DishLog dishLog = listOfDishLog.getDishLog(index);
+                dishLog.setName(name);
+                dishLog.setRestaurant(restaurant);
+                dishLog.setPrice(price);
+                dishLog.setEnjoymentLevel(enjoymentLevel);
+                dishLog.setFavourite(fav);
+            } catch (Exception exception) {
+                System.out.println("No Dish Log at given index.");
+            }
         }
     }
 }

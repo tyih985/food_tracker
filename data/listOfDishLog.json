@@ -1,16 +1,16 @@
 {"dish logs": [
     {
-        "price": 0,
-        "restaurant": "uigyuvgkhj",
-        "name": "iohugyuvgugh",
-        "favourite": false,
-        "enjoymentLevel": 5
+        "price": 121,
+        "restaurant": "N95",
+        "name": "TEST",
+        "favourite": true,
+        "enjoymentLevel": 3
     },
     {
-        "price": 500,
-        "restaurant": "WORLD",
-        "name": "HELLO",
-        "favourite": true,
-        "enjoymentLevel": 1
+        "price": 0,
+        "restaurant": "room",
+        "name": "CHANGE",
+        "favourite": false,
+        "enjoymentLevel": 5
     }
 ]}

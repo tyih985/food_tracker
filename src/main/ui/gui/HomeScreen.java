@@ -37,8 +37,6 @@ public class HomeScreen extends Screen {
     private JLabel saveSuccess;
     private JLabel loadSuccess;
 
-    private Screen dishLogsScreen;
-
     // MODIFIES: this
     // EFFECTS: home screen for user to save data to file and load data from file
     public HomeScreen(ListOfDishLog listOfDishLog) {
