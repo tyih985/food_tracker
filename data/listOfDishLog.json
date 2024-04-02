@@ -1,16 +1,1 @@
-{"dish logs": [
-    {
-        "price": 121,
-        "restaurant": "N95",
-        "name": "TEST",
-        "favourite": true,
-        "enjoymentLevel": 3
-    },
-    {
-        "price": 0,
-        "restaurant": "room",
-        "name": "CHANGE",
-        "favourite": false,
-        "enjoymentLevel": 5
-    }
-]}
+{"dish logs": []}

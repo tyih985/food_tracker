@@ -1,5 +1,7 @@
 package ui.gui;
 
+import model.Event;
+import model.EventLog;
 import model.ListOfDishLog;
 import persistence.JsonWriter;
 
@@ -62,14 +64,24 @@ public class GUI extends JFrame {
                         jsonWriter.open();
                         jsonWriter.write(listOfDishLog);
                         jsonWriter.close();
-                        System.out.println("\nSaved Dish Logs to " + JSON_STORE + "\n");
+                        printEventLog(EventLog.getInstance());
                         System.exit(0);
                     } catch (FileNotFoundException e) {
                         System.out.println("\nUnable to write to file: " + JSON_STORE + "\n");
                     }
+                } else if (confirmed == JOptionPane.NO_OPTION) {
+                    printEventLog(EventLog.getInstance());
+                    System.exit(0);
                 }
             }
         });
+    }
+
+    // EFFECTS: prints events in event log
+    private void printEventLog(EventLog eventLog) {
+        for (Event event : eventLog) {
+            System.out.println(event.toString() + "\n");
+        }
     }
 
     // MODIFIES: this

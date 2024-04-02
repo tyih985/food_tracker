@@ -17,17 +17,20 @@ public class ListOfDishLog implements Writable {
         this.listOfDishLog = new ArrayList<>();
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, EventLog
     // EFFECTS: adds DishLog at end of listOfDishLog
     public void addDishLog(DishLog dishLog) {
         listOfDishLog.add(dishLog);
+        EventLog.getInstance().logEvent(new Event(dishLog.getName() + ": added to list of Dish Logs."));
     }
 
     // REQUIRES: !listOfDishLog.isEmpty() and index in [0, listOfDishLog.size())
-    // MODIFIES: this
+    // MODIFIES: this, EventLog
     // EFFECTS: removes DishLog at given index from listOfDishLog
     public void removeDishLog(int index) {
+        DishLog removed = listOfDishLog.get(index);
         listOfDishLog.remove(index);
+        EventLog.getInstance().logEvent(new Event(removed.getName() + ": removed from list of Dish Logs."));
     }
 
     // EFFECTS: returns List<DishLog> with DishLog(s) in listOfDishLog that contain given name (not case-sensitive)
@@ -86,9 +89,12 @@ public class ListOfDishLog implements Writable {
     }
 
     @Override
+    // MODIFIES: EventLog
+    // EFFECT: converts list of dish logs to json object and returns it
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("dish logs", dishLogsToJason());
+        EventLog.getInstance().logEvent(new Event("Data saved to file."));
         return json;
     }
 

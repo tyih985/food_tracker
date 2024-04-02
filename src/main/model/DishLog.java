@@ -23,7 +23,7 @@ public class DishLog implements Writable {
         this.favourite = favourite;
     }
 
-    // EFFECTS: converts dish log to json object
+    // EFFECTS: converts dish log to json object and returns it
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -35,7 +35,7 @@ public class DishLog implements Writable {
         return json;
     }
 
-    // EFFECTS: prints summary of this Dish Log
+    // EFFECTS: returns summary of this Dish Log
     public String printReport() {
         String fav = "unfavourite";
         if (favourite) {
@@ -66,22 +66,28 @@ public class DishLog implements Writable {
     }
 
     public void setName(String name) {
+        String prev = this.name;
         this.name = name;
+        EventLog.getInstance().logEvent(new Event(prev + ": set name to " + name));
     }
 
     public void setRestaurant(String restaurant) {
         this.restaurant = restaurant;
+        EventLog.getInstance().logEvent(new Event(name + ": set restaurant to " + restaurant));
     }
 
     public void setPrice(double price) {
         this.price = price;
+        EventLog.getInstance().logEvent(new Event(name + ": set price to " + price));
     }
 
     public void setEnjoymentLevel(int enjoymentLevel) {
         this.enjoymentLevel = enjoymentLevel;
+        EventLog.getInstance().logEvent(new Event(name + ": set enjoyment level to " + enjoymentLevel));
     }
 
     public void setFavourite(boolean favourite) {
         this.favourite = favourite;
+        EventLog.getInstance().logEvent(new Event(name + ": set favourite status to " + favourite));
     }
 }

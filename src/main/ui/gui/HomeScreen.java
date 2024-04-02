@@ -123,7 +123,6 @@ public class HomeScreen extends Screen {
                     for (DishLog dishLog : data.getListOfDishLog()) {
                         listOfDishLog.addDishLog(dishLog);
                     }
-                    System.out.println("\nLoaded Dish Logs from " + JSON_STORE + "\n");
                     loadSuccess.setVisible(true);
                 } catch (IOException exception) {
                     System.out.println("\nUnable to read from file: " + JSON_STORE + "\n");
@@ -141,7 +140,6 @@ public class HomeScreen extends Screen {
                     jsonWriter.open();
                     jsonWriter.write(listOfDishLog);
                     jsonWriter.close();
-                    System.out.println("\nSaved Dish Logs to " + JSON_STORE + "\n");
                     saveSuccess.setVisible(true);
                 } catch (FileNotFoundException exception) {
                     System.out.println("\nUnable to write to file: " + JSON_STORE + "\n");

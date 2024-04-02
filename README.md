@@ -45,3 +45,31 @@ efficiently, or simply keep track of their favourite restaurant meals, I hope my
   be prompted to save when closing the application
 - You can reload the state of my application by going to the "Home" screen and pressing the "Load" button; To view the
   Dish Logs that have loaded from file, go to the "Dish Logs" screen and press the "Refresh" button
+
+### Phase 4 Task 2:
+Mon Apr 01 16:58:03 PDT 2024
+Data saved to file.
+
+Mon Apr 01 16:58:23 PDT 2024
+Dish Log 1: added to list of Dish Logs.
+
+Mon Apr 01 16:59:35 PDT 2024
+Dish Log 1: set name to Changed Dish Log 1
+
+Mon Apr 01 16:59:35 PDT 2024
+Changed Dish Log 1: set restaurant to Jone's BBQ and Foot Massage
+
+Mon Apr 01 16:59:35 PDT 2024
+Changed Dish Log 1: set price to 25.5
+
+Mon Apr 01 16:59:35 PDT 2024
+Changed Dish Log 1: set enjoyment level to 2
+
+Mon Apr 01 16:59:35 PDT 2024
+Changed Dish Log 1: set favourite status to false
+
+Mon Apr 01 16:59:40 PDT 2024
+Changed Dish Log 1: removed from list of Dish Logs.
+
+Mon Apr 01 16:59:47 PDT 2024
+Data saved to file.
