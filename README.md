@@ -73,3 +73,15 @@ Changed Dish Log 1: removed from list of Dish Logs.
 
 Mon Apr 01 16:59:47 PDT 2024
 Data saved to file.
+
+### Phase 4 Task 3:
+Looking at my UML class diagram, I would begin refactoring the design of my program implementing the Singleton design
+pattern on the ListOfDishLog class. This is because whenever my program runs, there should only ever be one instance of
+ListOfDishLog, as the user should only have a single list of their Dish Logs in the application. Making use of the
+Singleton design pattern would more efficiently create and maintain a single instance of ListOfDishLog by providing a
+global point of access to the object, allowing its actions to be coordinated across my entire program.
+
+Additionally, after implementing the Singleton design pattern, I would make further efforts to refactor my code to
+prevent coupling / duplicated code in classes such as DishLogApp, EventLog, and ListOfDishLog. To achieve this, I would
+refactor my code by making abstractions, whether it be new classes or methods, which would help make my code more
+readable and maintainable.

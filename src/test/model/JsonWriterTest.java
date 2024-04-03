@@ -7,6 +7,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,6 +54,14 @@ class JsonWriterTest extends JsonTest {
             writer.open();
             writer.write(ld);
             writer.close();
+
+            List<String> l = new ArrayList<>();
+            EventLog el = EventLog.getInstance();
+            for (Event event : el) {
+                l.add(event.getDescription());
+            }
+
+            assertTrue(l.contains("Data saved to file."));
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralListOfDishLog.json");
             ld = reader.read();

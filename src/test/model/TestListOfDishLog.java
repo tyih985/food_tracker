@@ -3,6 +3,9 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -14,10 +17,20 @@ public class TestListOfDishLog {
     DishLog testDishLog4;
     DishLog testDishLog5;
     DishLog testDishLog6;
+    Event e1;
+    Event e2;
+    Event e3;
+    Event e4;
+    Event e5;
+    Event e6;
 
+    @BeforeEach
+    public void loadEvents() {
+    }
     @BeforeEach
     public void setup() {
         testListOfDishLog = new ListOfDishLog();
+
         testDishLog1 = new DishLog("Fried Chicken DX", "Jones' BBQ and Foot Massage",
                 100.50, 5, true);
         testDishLog2 = new DishLog("Ramen", "Ichiraku Ramen",
@@ -57,6 +70,19 @@ public class TestListOfDishLog {
         assertEquals(testDishLog4, testListOfDishLog.getDishLog(3));
         assertEquals(testDishLog5, testListOfDishLog.getDishLog(4));
         assertEquals(testDishLog6, testListOfDishLog.getDishLog(5));
+
+        List<String> l = new ArrayList<>();
+        EventLog el = EventLog.getInstance();
+        for (Event event : el) {
+            l.add(event.getDescription());
+        }
+
+        assertTrue(l.contains(testDishLog1.getName() + ": added to list of Dish Logs."));
+        assertTrue(l.contains(testDishLog2.getName() + ": added to list of Dish Logs."));
+        assertTrue(l.contains(testDishLog3.getName() + ": added to list of Dish Logs."));
+        assertTrue(l.contains(testDishLog4.getName() + ": added to list of Dish Logs."));
+        assertTrue(l.contains(testDishLog5.getName() + ": added to list of Dish Logs."));
+        assertTrue(l.contains(testDishLog6.getName() + ": added to list of Dish Logs."));
     }
 
     @Test
@@ -76,6 +102,19 @@ public class TestListOfDishLog {
         testListOfDishLog.removeDishLog(0);
         testListOfDishLog.removeDishLog(0);
         assertTrue(testListOfDishLog.isEmpty());
+
+        List<String> l = new ArrayList<>();
+        EventLog el = EventLog.getInstance();
+        for (Event event : el) {
+            l.add(event.getDescription());
+        }
+
+        assertTrue(l.contains(testDishLog1.getName() + ": removed from list of Dish Logs."));
+        assertTrue(l.contains(testDishLog2.getName() + ": removed from list of Dish Logs."));
+        assertTrue(l.contains(testDishLog3.getName() + ": removed from list of Dish Logs."));
+        assertTrue(l.contains(testDishLog4.getName() + ": removed from list of Dish Logs."));
+        assertTrue(l.contains(testDishLog5.getName() + ": removed from list of Dish Logs."));
+        assertTrue(l.contains(testDishLog6.getName() + ": removed from list of Dish Logs."));
     }
 
     @Test
