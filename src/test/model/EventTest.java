@@ -8,14 +8,16 @@ import org.junit.jupiter.api.Test;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for the Event class
  */
 public class EventTest {
 	private Event e;
+	private Event e2;
 	private Date d;
+	private ListOfDishLog listOfDishLog;
 	
 	//NOTE: these tests might fail if time at which line (2) below is executed
 	//is different from time that line (1) is executed.  Lines (1) and (2) must
@@ -23,8 +25,10 @@ public class EventTest {
 	
 	@BeforeEach
 	public void runBefore() {
-		e = new Event("Sensor open at door");   // (1)
-		d = Calendar.getInstance().getTime();   // (2)
+		e = new Event("Sensor open at door");
+		d = Calendar.getInstance().getTime();
+		listOfDishLog = new ListOfDishLog();
+		e2 = new Event("Sensor close at door");
 	}
 	
 	@Test
@@ -36,5 +40,13 @@ public class EventTest {
 	@Test
 	public void testToString() {
 		assertEquals(d.toString() + "\n" + "Sensor open at door", e.toString());
+	}
+
+
+	@Test
+	public void testEqualsAndHashCode() {
+		assertFalse(e.equals(listOfDishLog));
+		assertFalse(e.equals(null));
+		assertFalse(e.hashCode() == e2.hashCode());
 	}
 }
