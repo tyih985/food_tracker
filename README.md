@@ -30,7 +30,7 @@ efficiently, or simply keep track of their favourite restaurant meals, I hope my
 - to file and have the option to do so or not
 - As a user, when I start the application, I want to be given the option to load my to-do list from file
 
-### Instructions for Grader
+### Instructions
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by going to the
   "Make Dish Logs" screen, filling out the fields, and pressing the "Add" button; To view the Dish Logs you have
   created, go to the "Dish Logs" screen and press the "Refresh" button
