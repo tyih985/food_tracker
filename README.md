@@ -2,6 +2,8 @@
 
 ### <u>Project Proposal / Overview</u>
 
+<img width="477" height="683" alt="Screenshot 2025-09-08 011138" src="https://github.com/user-attachments/assets/3b74f03b-00c1-4bb5-a820-84cf967d8a38" />
+
 My application will be a **restaurant / food tracker** where users can keep track of the kinds of foods they eat at
 different restaurants. They will be able to *log the prices of the dishes they eat*, *keep track of what restaurants
 those dishes came from*, and be able to *rate how much they enjoyed each dish*. This project is of interest to me
